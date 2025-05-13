@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro Monk Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #3a0ca3;
+            --secondary-color: #4cc9f0;
+            --accent-color: #f72585;
+            --dark-bg: #1a1a2e;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 100%;
+        }
+        
+        .metric-card {
+            background: linear-gradient(145deg, var(--dark-bg), #2d2d44);
+            border-radius: 16px;
+            padding: 24px;
+            color: var(--light-text);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .metric-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .metric-title i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: var(--secondary-color);
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: width 1s ease-in-out;
+        }
+        
+        .metric-change {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .metric-change.positive {
+            color: #4ade80;
+        }
+        
+        .metric-change.negative {
+            color: #f87171;
+        }
+        
+        .metric-change i {
+            margin-right: 5px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-brain"></i>Dopamine Balance</div>
+            <div class="metric-value">8.5</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 85%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-arrow-up"></i> +12% from baseline
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-smile"></i>Serotonin Balance</div>
+            <div class="metric-value">7.2</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 72%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-arrow-up"></i> +8% from baseline
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-heart"></i>GABA Balance</div>
+            <div class="metric-value">6.8</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 68%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-arrow-up"></i> +15% from baseline
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-check-circle"></i>Protocol Completion</div>
+            <div class="metric-value">92%</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 92%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-arrow-up"></i> +5% from last week
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-fire"></i>Weekly Streak</div>
+            <div class="metric-value">17 days</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 68%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-trophy"></i> New personal best!
+            </div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-title"><i class="fas fa-bolt"></i>Transformation Score</div>
+            <div class="metric-value">8.7</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 87%"></div>
+            </div>
+            <div class="metric-change positive">
+                <i class="fas fa-arrow-up"></i> Elite Performance
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation for progress bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
